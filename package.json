@@ -1,14 +1,15 @@
 {
-  "name": "elm-training",
+  "name": "firebase-elm-template",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "elm-build": "./optimize.sh",
-    "serve": "cross-env NODE_ENV=development concurrently \"postcss src/tailwind.css -o dist/tailwind.css --watch\"  \"live-server ./dist\"",
-    "development": "cross-env NODE_ENV=development postcss src/tailwind.css -o dist/tailwind.css",
-    "production": "cross-env NODE_ENV=production postcss src/tailwind.css -o dist/tailwind.css",
-    "start": "npm run serve"
+    "start": "npm run serve",
+    "serve": "cross-env NODE_ENV=development concurrently 'postcss src/tailwind.css -o dist/main.css --watch' 'live-server --watch=./index.html' 'npm run chokidar'",
+    "development": "cross-env NODE_ENV=development postcss src/tailwind.css -o dist/main.css",
+    "production": "cross-env NODE_ENV=production postcss src/tailwind.css -o dist/main.css && npm run elm-build",
+    "elm-build": "./src/optimize.sh src/Main.elm",
+    "chokidar": "chokidar 'src/Main.elm' -c 'elm make src/Main.elm --output=dist/elm.js' --initial"
   },
   "dependencies": {
     "autoprefixer": "^9.7.6",
@@ -16,13 +17,15 @@
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^1.2.0",
+    "chokidar-cli": "^2.1.0",
     "concurrently": "^4.1.0",
     "cross-env": "^5.2.0",
     "cssnano": "^4.1.10",
     "live-server": "^1.2.1",
     "postcss-cli": "^6.1.2",
+    "uglify-js": "^3.9.1",
     "underscore": "^1.10.2"
   },
-  "author": "",
+  "author": "Jaeyson Anthony Y.",
   "license": "ISC"
 }
