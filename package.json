@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "elm-build": "./optimize.sh",
     "serve": "cross-env NODE_ENV=development concurrently \"postcss src/tailwind.css -o dist/tailwind.css --watch\"  \"live-server ./dist\"",
     "development": "cross-env NODE_ENV=development postcss src/tailwind.css -o dist/tailwind.css",
     "production": "cross-env NODE_ENV=production postcss src/tailwind.css -o dist/tailwind.css",
