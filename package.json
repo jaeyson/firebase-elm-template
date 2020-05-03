@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run serve",
-    "serve": "cross-env NODE_ENV=development concurrently 'postcss src/tailwind.css -o dist/main.css --watch' 'live-server --watch=./index.html' 'npm run chokidar'",
+    "serve": "cross-env NODE_ENV=development concurrently 'postcss src/tailwind.css -o dist/main.css --watch' 'live-server' 'npm run chokidar'",
     "development": "cross-env NODE_ENV=development postcss src/tailwind.css -o dist/main.css",
     "production": "cross-env NODE_ENV=production postcss src/tailwind.css -o dist/main.css && npm run elm-build",
     "elm-build": "./src/optimize.sh src/Main.elm",
